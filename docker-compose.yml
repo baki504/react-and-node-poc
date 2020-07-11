@@ -1,0 +1,25 @@
+version: "2.1"
+services:
+  dbms:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      TZ: ${OS_TIMEZONE}
+      MYSQL_ROOT_PASSWORD: ${TYPEORM_PASSWORD}
+      MYSQL_DATABASE: ${TYPEORM_DATABASE}
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    ports:
+      - ${TYPEORM_PORT}:3306
+
+  dbadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      TZ: ${OS_TIMEZONE}
+      PMA_HOST: dbms
+      PMA_PASSWORD: ${TYPEORM_PASSWORD}
+    ports:
+      - ${ADMIN_PORT}:80
