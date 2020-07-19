@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
+axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
 export default function Register() {
-  const register = () => {
-    console.log("register");
+  const register = async () => {
+    await axios
+      .get("http://localhost:8081")
+      .then((response) => console.log(response));
   };
   return (
     <>
@@ -15,13 +20,13 @@ export default function Register() {
       <div>
         gender:
         <input name="gender" type="radio" value="01" />
-        男性
+        male
         <input name="gender" type="radio" value="02" />
-        女性
+        female
       </div>
       <div>
         <Link to="/register">
-          <button onClick={register}>登録</button>
+          <button onClick={register}>regist</button>
         </Link>
       </div>
       <div>

@@ -5,6 +5,7 @@ import Search from "pages/Search";
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
+import TablePage from "pages/TablePage";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         <Search />
       </Route>
       <Route path="/detail/:id" children={<Detail />}></Route>
+      <Route path="/table">
+        <TablePage />
+      </Route>
     </Switch>
   );
 }

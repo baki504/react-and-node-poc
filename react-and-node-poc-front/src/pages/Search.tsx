@@ -30,7 +30,7 @@ export default function Search() {
       <div>
         usename:
         <input onChange={(event) => setSearchText(event.target.value)} />
-        <button onClick={() => search(searchText)}>検索</button>
+        <button onClick={() => search(searchText)}>search</button>
       </div>
       <div>
         <table>
